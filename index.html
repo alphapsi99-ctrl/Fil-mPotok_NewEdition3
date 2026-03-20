@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fil'mPotok — Моя Библиотека</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    
+    <script src="js/storage.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link active">🏠 Главная</a>
+            <a href="form.html" class="nav-link">➕ Добавить фильм</a>
+            <a href="about.html" class="nav-link">ℹ️ О проекте</a>
+        </nav>
+
+        <header>
+            <h1>🎬 Мои фильмы и сериалы</h1>
+            <p>Ваша персональная коллекция с онлайн-плеером</p>
+            <div class="search-bar" style="margin-top: 20px;">
+                <input type="text" id="movieInput" placeholder="Введите название фильма...">
+                <button id="addBtn" class="q-btn">Найти и добавить</button>
+            </div>
+        </header>
+
+        <main>
+            <div id="myMoviesGrid" class="my-movies-grid"></div>
+        </main>
+    </div>
+
+    <div id="playerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePlayer()">&times; Закрыть</span>
+            <h3 id="modalTitle">Загрузка...</h3>
+
+            <div class="player-controls">
+                <div class="source-group">
+                    <button id="src1" class="q-btn active" onclick="changeSource(1)">RU (Озвучка)</button>
+                    <button id="src2" class="q-btn" onclick="changeSource(2)">RU Резерв</button>
+                    <button id="src3" class="q-btn" onclick="changeSource(3)">Зарубежный</button>
+                </div>
+
+                <div class="episode-controls" id="epControls" style="display: none;">
+                    <button class="nav-btn" onclick="changeEpisode(-1)">⬅ Пред.</button>
+                    <div class="episode-info">
+                        Серия <span id="currentEpisodeDisplay">1</span>
+                    </div>
+                    <button class="nav-btn" onclick="changeEpisode(1)">След. ➡</button>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <iframe id="videoPlayer" src="" allowfullscreen frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить контент — Fil'mPotok</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/storage.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">🏠 Главная</a>
+            <a href="form.html" class="nav-link active">➕ Добавить фильм</a>
+            <a href="about.html" class="nav-link">ℹ️ О проекте</a>
+        </nav>
+
+        <header>
+            <h1>Добавить в коллекцию</h1>
+        </header>
+
+        <main>
+            <div class="movie-form">
+                <input type="text" id="movieInput" placeholder="Введите название фильма...">
+                
+                <div class="form-buttons">
+                    <button id="submitBtn" class="primary-btn" onclick="searchMovie()">Найти и добавить</button>
+                    <button class="secondary-btn" onclick="location.href='index.html'">Назад</button>
+                </div>
+                
+                <p class="hint">Введите точное название на русском языке (например: "Человек-паук")</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
