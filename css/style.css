@@ -1,0 +1,395 @@
+/* Переменные проекта */
+:root {
+  --accent: #e50914;
+  --dark-bg: #0a0a0b;
+  --card-bg: #1c1c1e;
+  --text-main: #ffffff;
+  --text-dim: #b3b3b3;
+  --transition: 0.3s ease;
+}
+
+/* Базовые стили */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* 3.1 Навигационное меню */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  background: rgba(28, 28, 30, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--accent);
+}
+
+/* Шапка */
+header {
+  padding: 40px 0;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+/* Поиск и Формы */
+.movie-form, .search-box {
+  max-width: 600px;
+  margin: 20px auto;
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  background: #2c2c2e;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: white;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+/* Кнопки (Состояния hover по пункту 4.4) */
+.primary-btn, #addBtn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+.primary-btn:hover, #addBtn:hover {
+  background: #ff0f1a;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
+  transform: scale(1.02);
+}
+
+/* 3.1 Сетка элементов */
+.my-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 20px 0;
+}
+
+.movie-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+/* Состояние "Просмотрено" */
+.movie-card.is-watched {
+  opacity: 0.6;
+  filter: grayscale(0.8);
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: rgba(0,0,0,0.3);
+}
+
+/* Кнопка удаления */
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(229, 9, 20, 0.8);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background: var(--accent);
+  transform: rotate(90deg);
+}
+
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 1000px;
+  background: #111;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  border: 1px solid #333;
+}
+
+/* 4.4 Адаптивность */
+@media (max-width: 768px) {
+  .my-movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+  }
+  
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .main-nav {
+    gap: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .my-movies-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Стили для страницы About */
+.about-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.about-section h2 {
+  color: var(--accent);
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+
+/* Группа кнопок выбора сервера */
+.source-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.q-btn {
+    background: #2a2a2a;
+    color: #ccc;
+    border: 1px solid #444;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.q-btn:hover {
+    background: #3a3a3a;
+    border-color: #666;
+}
+
+/* Активная кнопка озвучки */
+.q-btn.active {
+    background: var(--accent, #e50914); /* Ваш красный цвет */
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+}
+
+/* Блок переключения серий */
+.episode-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.episode-info {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #fff;
+    min-width: 100px;
+}
+
+.nav-btn {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    background: #555;
+}
+
+.q-btn.active {
+    background: var(--accent);
+    border-color: white;
+}
+.episode-controls {
+    margin-top: 15px;
+    background: #1a1a1a;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+
+/* Планшеты (до 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        width: 95%;
+    }
+    .my-movies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+    }
+}
+
+/* Телефоны (до 600px) */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    /* Сетка в две колонки на маленьких экранах */
+    .my-movies-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    /* Модальное окно на весь экран */
+    .modal-content {
+        width: 98%;
+        padding: 10px;
+        margin: 5% auto;
+    }
+
+    /* Кнопки переключения серверов в ряд с прокруткой */
+    .source-group {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 10px;
+        gap: 5px;
+    }
+    
+    .q-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    /* Плеер подстраивается под высоту экрана */
+    .video-wrapper {
+        padding-bottom: 56.25%; /* Пропорции 16:9 */
+    }
+    
+    .nav-link {
+        font-size: 14px;
+        padding: 5px;
+    }
+}
+
+/* Адаптивная сетка фильмов */
+.my-movies-grid {
+    display: grid;
+    /* На компьютерах - по 4-5 в ряд, на планшетах по 3, на мобилках по 2 */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Мобильные устройства (телефоны) */
+@media (max-width: 600px) {
+    .my-movies-grid {
+        grid-template-columns: repeat(2, 1fr); /* Ровно 2 колонки */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .modal-content {
+        width: 95% !important;
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    .video-wrapper {
+        height: 250px; /* Фиксированная высота для мобилок, чтобы не прыгало */
+    }
+
+    h1 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .source-group {
+        display: flex;
+        flex-wrap: wrap; /* Кнопки серверов перенесутся на вторую строку, если не влезут */
+        justify-content: center;
+        gap: 5px;
+    }
+}
